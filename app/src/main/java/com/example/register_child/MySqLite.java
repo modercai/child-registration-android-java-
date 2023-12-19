@@ -1,6 +1,7 @@
 package com.example.register_child;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -57,5 +58,14 @@ public class MySqLite extends SQLiteOpenHelper {
         }else{
             Toast.makeText(context, "Submitted Successfully", Toast.LENGTH_SHORT).show();
         }
+    }
+    Cursor readDatabase(){
+        String fetchQuery = "SELECT * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if(db != null){
+           cursor = db.rawQuery(fetchQuery,null);
+        }
+        return cursor;
     }
 }

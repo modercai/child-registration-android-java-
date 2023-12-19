@@ -17,6 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
     RadioGroup genderSelection;
     Spinner immunization;
     Button submitButton;
+    String[] immunizationOptions = {"Option 1", "Option 2", "Option 3"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
