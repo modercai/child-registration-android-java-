@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Arrays;
+
 public class RegisterActivity extends AppCompatActivity {
 
     EditText firstName, lastname, age;
@@ -62,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (firstNameInput.isEmpty()) {
                     firstName.setError("First Name cannot be empty");
                     return; // Stop execution if the input is invalid
-                } else if (!isValidName(String.valueOf(firstName))) {
+                } else if (isValidName(String.valueOf(firstName))) {
                     firstName.setError("invalid first name");
                 }
 
@@ -71,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (lastNameInput.isEmpty()) {
                     lastname.setError("Last Name cannot be empty");
                     return;
-                } else if (!isValidName(String.valueOf(lastname))) {
+                } else if (isValidName(String.valueOf(lastname))) {
                     lastname.setError("invalid last name");
                 }
 
@@ -103,8 +105,18 @@ public class RegisterActivity extends AppCompatActivity {
                         Integer.valueOf(age.getText().toString().trim())
                         ,selectedGender,
                         selectedImmunizationText);
+
             }
+
         });
+        firstName.getText().clear();
+        lastname.getText().clear();
+        age.getText().clear();
+        genderSelection.clearCheck();
+        textViewImmunizations.setText(""); // Clear immunizations text
+
+        // Clear the selectedImmunizations array
+        Arrays.fill(selectedImmunizations, false);
 
     }
     private void showImmunizationsDialog() {
@@ -146,6 +158,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 //    check if the name contains any special characters and/or numbers
     private boolean isValidName(String name) {
-        return !name.matches("[a-zA-Z]+");
+        return name.matches("[a-zA-Z]+");
     }
 }
