@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChildProfile">
+
+    <!-- Profile Image -->
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/boy"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textViewFirstName"
+        android:layout_marginTop="20dp"
+
+       />
+
+    <!-- First Name -->
+    <TextView
+        android:id="@+id/textViewFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Name: John"
+        app:layout_constraintTop_toBottomOf="@id/profileImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Last Name -->
+    <TextView
+        android:id="@+id/textViewLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Name: Doe"
+        app:layout_constraintTop_toBottomOf="@id/textViewFirstName"
+        app:layout_constraintStart_toStartOf="@id/textViewFirstName"/>
+
+    <!-- Age -->
+    <TextView
+        android:id="@+id/textViewAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age: 8"
+        app:layout_constraintTop_toBottomOf="@id/textViewLastName"
+        app:layout_constraintStart_toStartOf="@id/textViewLastName"/>
+
+    <!-- Gender -->
+    <TextView
+        android:id="@+id/textViewGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gender: Male"
+        app:layout_constraintTop_toBottomOf="@id/textViewAge"
+        app:layout_constraintStart_toStartOf="@id/textViewAge"/>
+
+    <!-- Immunizations -->
+    <TextView
+        android:id="@+id/textViewImmunizations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Immunizations: BCG, MMR, RV, DTaP"
+        app:layout_constraintTop_toBottomOf="@id/textViewGender"
+        app:layout_constraintStart_toStartOf="@id/textViewGender"
+        android:layout_marginBottom="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
