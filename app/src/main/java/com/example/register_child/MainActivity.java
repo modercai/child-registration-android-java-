@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     MySqLite myDb;
     ArrayList<String> child_id,first_name,last_name,child_age,child_gender,child_immunization;
     CustomAdapter customAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

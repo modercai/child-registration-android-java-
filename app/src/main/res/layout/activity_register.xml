@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
-    android:paddingTop="50dp">
+    android:paddingTop="50dp"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/child_registration"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <EditText
         android:id="@+id/editTextFirstName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:hint="First Name"
+        android:layout_marginTop="16dp"
+        android:hint="@string/first_name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,9 +33,10 @@
 
     <EditText
         android:id="@+id/editTextLastName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:hint="Last Name"
+        android:layout_marginTop="8dp"
+        android:hint="@string/last_name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,56 +44,65 @@
 
     <EditText
         android:id="@+id/editTextAge"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:hint="Age"
+        android:layout_marginTop="8dp"
+        android:hint="@string/age"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextLastName" />
+        app:layout_constraintTop_toBottomOf="@id/editTextLastName"/>
 
     <RadioGroup
         android:id="@+id/radioGroupGender"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextAge">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Choose Gender" />
+            android:text="@string/choose_gender"
+            android:layout_marginBottom="8dp"/>
 
         <RadioButton
             android:id="@+id/radioButtonMale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Male" />
+            android:text="@string/male" />
 
         <RadioButton
             android:id="@+id/radioButtonFemale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Female" />
+            android:text="@string/female" />
     </RadioGroup>
 
-    <Spinner
-        android:id="@+id/spinnerImmunizations"
+    <TextView
+        android:id="@+id/textViewImmunizations"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:hint="Select Immunizations"
+        android:textColor="@color/black"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radioGroupGender"/>
-
+        app:layout_constraintTop_toBottomOf="@id/radioGroupGender" />
 
     <Button
         android:id="@+id/buttonSubmit"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:layout_marginTop="100dp"
+        android:text="@string/submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinnerImmunizations" />
+        app:layout_constraintTop_toBottomOf="@id/radioGroupGender" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
