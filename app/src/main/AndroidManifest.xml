@@ -13,18 +13,23 @@
         android:theme="@style/Theme.Registerchild"
         tools:targetApi="31">
         <activity
+            android:name=".ChildProfile"
+            android:exported="false" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false"
             android:label="Register child"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:label="MainPage"
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="MainPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

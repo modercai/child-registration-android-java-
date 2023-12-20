@@ -1,8 +1,10 @@
 package com.example.register_child;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,6 +40,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.firstName.setText(String.valueOf(first_name.get(position)));
         holder.lastName.setText(String.valueOf(last_name.get(position)));
         holder.child_id.setText(String.valueOf(child_id.get(position)));
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ChildProfile.class);
+                intent.putExtra("CHILD_ID", String.valueOf(child_id.get(position)));
+                intent.putExtra("FIRST_NAME", String.valueOf(first_name.get(position)));
+                intent.putExtra("LAST_NAME", String.valueOf(last_name.get(position)));
+                intent.putExtra("AGE", String.valueOf(child_age.get(position)));
+                intent.putExtra("GENDER", String.valueOf(child_gender.get(position)));
+                intent.putExtra("IMMUNIZATION", String.valueOf(child_immunization.get(position)));
+                context.startActivity(intent);
+            }
+        });
 
 
     }
@@ -49,11 +64,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView child_id, firstName, lastName;
+        LinearLayout linearLayout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             firstName = itemView.findViewById(R.id.child_fname);
             lastName = itemView.findViewById(R.id.child_lname);
             child_id = itemView.findViewById(R.id.child_id);
+            linearLayout = itemView.findViewById(R.id.linearlayout);
         }
     }
 }
