@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
-    Button go_to_reg,sort_by_name, sort_by_age;
+    Button go_to_reg,sort_by_name;
     RecyclerView recyclerView;
 
     MySqLite myDb;
@@ -30,20 +30,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView1);
         go_to_reg = findViewById(R.id.go_to_reg);
 
-        sort_by_age = findViewById(R.id.sort_by_age);
         sort_by_name = findViewById(R.id.sort_by_name);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));//layout for a divider in recycler view
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
-
-        sort_by_age.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sortByAge();
-            }
-        });
 
         sort_by_name.setOnClickListener(new View.OnClickListener() {
             @Override
