@@ -103,10 +103,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sortByName() {
-        // Implement custom sorting logic for first_name ArrayList
+        // Implement custom sorting logic for last_name ArrayList and first_name ArrayList together
 
-        Collections.sort(first_name, String.CASE_INSENSITIVE_ORDER);
+        ArrayList<String> combinedNames = new ArrayList<>();
+
+        // Combine last name and first name into a single string for each item
+        for (int i = 0; i < last_name.size(); i++) {
+            String combinedName = last_name.get(i) + " " + first_name.get(i);
+            combinedNames.add(combinedName);
+        }
+
+        // Sort the combined names
+        Collections.sort(combinedNames, String.CASE_INSENSITIVE_ORDER);
+
+        // Update the original ArrayLists based on the sorted combined names
+        for (int i = 0; i < combinedNames.size(); i++) {
+            String combinedName = combinedNames.get(i);
+            String[] names = combinedName.split(" ");
+
+            // Update last_name and first_name ArrayLists
+            last_name.set(i, names[0]);
+            first_name.set(i, names[1]);
+        }
+
         // Notify the adapter about the changes in the data
         customAdapter.notifyDataSetChanged();
     }
+
 }
