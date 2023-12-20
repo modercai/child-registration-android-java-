@@ -1,20 +1,21 @@
 package com.example.register_child;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
-    Button go_to_reg;
+    Button go_to_reg,sort_by_name, sort_by_age;
     RecyclerView recyclerView;
 
     MySqLite myDb;
@@ -27,6 +28,28 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView1);
         go_to_reg = findViewById(R.id.go_to_reg);
+
+        sort_by_age = findViewById(R.id.sort_by_age);
+        sort_by_name = findViewById(R.id.sort_by_name);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));//layout for a divider in recycler view
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                LinearLayoutManager.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
+        sort_by_age.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sortByAge();
+            }
+        });
+
+        sort_by_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sortByName();
+            }
+        });
 
         go_to_reg.setOnClickListener(new View.OnClickListener(){
 
@@ -65,5 +88,25 @@ public class MainActivity extends AppCompatActivity {
                 child_immunization.add(cursor.getString(5));
             }
         }
+    }
+//    sorting methods(having the functionality for sorting by age and sorting by name)
+    private void sortByAge() {
+        // Implement custom sorting logic for child_age ArrayList
+        Collections.sort(child_age, new Comparator<String>() {
+            @Override
+            public int compare(String age1, String age2) {
+
+                return Integer.compare(Integer.parseInt(age1), Integer.parseInt(age2));
+            }
+        });
+        customAdapter.notifyDataSetChanged();
+    }
+
+    private void sortByName() {
+        // Implement custom sorting logic for first_name ArrayList
+
+        Collections.sort(first_name, String.CASE_INSENSITIVE_ORDER);
+        // Notify the adapter about the changes in the data
+        customAdapter.notifyDataSetChanged();
     }
 }
